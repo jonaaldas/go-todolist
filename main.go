@@ -51,12 +51,8 @@ func extractUser() gin.HandlerFunc {
 }
 
 func main() {
-	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "", // No password set
-		DB:       0,  // Use default DB
-		Protocol: 2,  // Connection protocol
-	})
+	opt, _ := redis.ParseURL("rediss://default:ATSVAAIjcDEyZTA3NTkyYWM0M2E0OTMxOGVhNjcyZGMyMWIyMDU4N3AxMA@selected-albacore-13461.upstash.io:6379")
+	client := redis.NewClient(opt)
 
 	ctx := context.Background()
 
