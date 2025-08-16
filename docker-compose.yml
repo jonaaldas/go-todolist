@@ -21,6 +21,8 @@ services:
       - ENV=production
     networks:
       - app-network
+    env_file:
+      - .env
 
 networks:
   app-network:
