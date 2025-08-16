@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
@@ -51,7 +52,7 @@ func extractUser() gin.HandlerFunc {
 }
 
 func main() {
-	opt, _ := redis.ParseURL("rediss://default:ATSVAAIjcDEyZTA3NTkyYWM0M2E0OTMxOGVhNjcyZGMyMWIyMDU4N3AxMA@selected-albacore-13461.upstash.io:6379")
+	opt, _ := redis.ParseURL(os.Getenv("REDIS_URL"))
 	client := redis.NewClient(opt)
 
 	ctx := context.Background()
